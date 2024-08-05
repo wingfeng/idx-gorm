@@ -8,6 +8,7 @@ import (
 	idxgorm "github.com/wingfeng/idx-gorm"
 	"github.com/wingfeng/idx-gorm/models"
 
+	constants "github.com/wingfeng/idx/oauth2/const"
 	"github.com/wingfeng/idx/oauth2/utils"
 	"gorm.io/gorm"
 )
@@ -55,6 +56,7 @@ func TestSeedData(t *testing.T) {
 	addClient("code_client", "secret", "authorization_code", t)
 	addClient("password_client", "secret", "password", t)
 	addClient("local_test", "secret", "authorization_code", t)
+	addClient("device_code_client", "secret", string(constants.DeviceCode), t)
 
 }
 func TestInsertHybrid(t *testing.T) {
@@ -88,8 +90,15 @@ func addClient(clientID, secret, grantType string, t *testing.T) {
 
 		//UserSsoLifetime: , can be zero
 	}
+	//	var count int64
+	var result *gorm.DB
+	if db.Table("clients").Where("client_id=?", clientID).First(&models.Client{}).RowsAffected > 0 {
+		result = db.Table("clients").Updates(client).Where("client_id=?", clientID)
 
-	result := db.Table("clients").Updates(client).Where("client_id=?", clientID)
+	} else {
+		result = db.Table("clients").Save(client).Where("client_id=?", clientID)
+	}
+
 	if result.Error != nil {
 		t.Logf("insert client error: %v", result.Error)
 		panic(result.Error)
