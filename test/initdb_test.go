@@ -8,8 +8,8 @@ import (
 	idxgorm "github.com/wingfeng/idx-gorm"
 	"github.com/wingfeng/idx-gorm/models"
 
-	constants "github.com/wingfeng/idx/oauth2/const"
-	"github.com/wingfeng/idx/oauth2/utils"
+	constants "github.com/wingfeng/idx-oauth2/const"
+	"github.com/wingfeng/idx-oauth2/utils"
 	"gorm.io/gorm"
 )
 

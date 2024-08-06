@@ -8,11 +8,11 @@ import (
 
 // Role [...]
 type Role struct {
-	Id             string `json:"id" gorm:"primary_key;column:id;type:varchar(255);not null"`
+	Id             string `json:"-" gorm:"primary_key;column:id;type:varchar(255);not null"`
 	Name           string `gorm:"column:name;type:varchar(256)"`
-	NormalizedName string `gorm:"unique;column:normalizedname;type:varchar(256)"`
-
-	Record `gorm:"embedded"`
+	NormalizedName string `json:"-" gorm:"unique;column:normalizedname;type:varchar(256)"`
+	Users          []User `json:"-" gorm:"many2many:user_roles;foreignkey:id;association_foreignkey:id;"`
+	Record         `json:"-" gorm:"embedded"`
 }
 
 // //TableName 数据表名称

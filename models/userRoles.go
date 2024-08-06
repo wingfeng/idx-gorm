@@ -2,11 +2,11 @@ package models
 
 // UserRoles [...]
 type UserRoles struct {
-	UserId string `gorm:"primary_key;column:userid;type:varchar(255);not null"`
-	Users  User   `gorm:"foreignkey:userid;"`
-	RoleId string `gorm:"primary_key;index:IX_UserRoles_RoleId;column:roleid;type:varchar(255);not null"`
+	UserId string `gorm:"primary_key;column:user_id;type:varchar(255);not null"`
+	Users  User   `gorm:"foreignkey:user_id;"`
+	RoleId string `gorm:"primary_key;index:IX_UserRoles_RoleId;column:role_id;type:varchar(255);not null"`
 
-	Roles  Role `gorm:"foreignkey:roleid;reference:Id"`
+	Roles  Role `gorm:"foreignkey:role_id;reference:Id"`
 	Record `gorm:"embedded"`
 }
 

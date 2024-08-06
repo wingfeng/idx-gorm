@@ -2,7 +2,7 @@ package repo
 
 import (
 	"github.com/wingfeng/idx-gorm/models"
-	"github.com/wingfeng/idx/oauth2/model"
+	"github.com/wingfeng/idx-oauth2/model"
 	"gorm.io/gorm"
 )
 

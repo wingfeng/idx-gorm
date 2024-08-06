@@ -3,7 +3,7 @@ package repo
 import (
 	"log/slog"
 
-	"github.com/wingfeng/idx/oauth2/model"
+	"github.com/wingfeng/idx-oauth2/model"
 	"gorm.io/gorm"
 )
 

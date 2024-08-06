@@ -2,7 +2,7 @@ package models
 
 import (
 	"github.com/labstack/gommon/log"
-	"github.com/wingfeng/idx/oauth2/model"
+	"github.com/wingfeng/idx-oauth2/model"
 	"gorm.io/gorm"
 )
 
@@ -13,12 +13,9 @@ func Sync2Db(x *gorm.DB) {
 	err := x.AutoMigrate(
 
 		new(PersistedGrants),
-
 		new(Role),
-
-		new(UserRoles),
 		new(User),
-
+		new(UserRoles),
 		new(model.Authorization),
 		new(Client),
 	)

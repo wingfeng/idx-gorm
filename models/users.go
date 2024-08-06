@@ -25,8 +25,8 @@ type User struct {
 	LockoutEnd           null.Time `json:"lockoutend" gorm:"column:lockoutend"`
 	LockoutEnabled       bool      `json:"lockoutenabled" gorm:"column:lockoutenabled;not null"`
 	AccessFailedCount    int       `json:"accessfailedcount" gorm:"column:accessfailedcount;type:int;not null"`
-
-	Record `gorm:"embedded"`
+	Roles                []Role    `json:"roles" gorm:"many2many:user_roles;foreignkey:id;association_foreignkey:id;"`
+	Record               `gorm:"embedded"`
 }
 
 // //TableName 数据表名称
