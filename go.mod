@@ -7,7 +7,7 @@ require (
 	github.com/labstack/gommon v0.4.2
 	github.com/lunny/log v0.0.0-20160921050905-7887c61bf0de
 	github.com/stretchr/testify v1.9.0
-	github.com/wingfeng/idx-oauth2 v0.10.1
+	github.com/wingfeng/idx-oauth2 v0.11.0
 	gopkg.in/guregu/null.v4 v4.0.0
 	gorm.io/driver/mysql v1.5.7
 	gorm.io/driver/postgres v1.5.9
