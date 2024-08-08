@@ -10,4 +10,4 @@ go get github.com/wingfeng/idx-oauth2-gorm
 
 ## Usage
 
-you can find the example in [IDX-OAuth2 gorm example](https://github.com/wingfeng/idx-oauth2/example/gorm) main.go
+you can find the example in [IDX-OAuth2 gorm example](https://github.com/wingfeng/idx-oauth2) ./example/gorm/main.go
