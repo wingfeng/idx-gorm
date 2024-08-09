@@ -8,6 +8,8 @@ type Client struct {
 	Id string `json:"id"`
 	// ClientId 是客户端提供的唯一标识符，用于区分不同的客户端。在数据库中唯一。
 	ClientId string `json:"client_id" gorm:"unique;column:client_id;type:varchar(200);not null"`
+	// RequireSecret 指示是否需要客户端提供密钥。
+	RequireSecret bool `json:"require_secret" gorm:"column:require_secret;not null"`
 	// Secret 是客户端的密钥，用于安全验证。
 	Secret string `json:"secret"`
 	// ClientScope 定义了客户端允许访问的范围。
@@ -62,7 +64,12 @@ func (c *Client) GetPostLogoutUris() []string {
 // 该方法没有参数。
 // 返回值是一个字符串切片，包含当前客户端的密钥。
 func (c *Client) GetSecret() []string {
-	return []string{c.Secret}
+	//Secret set to empty. then do not check the client secret.
+	if !c.RequireSecret {
+		return []string{}
+	} else {
+		return []string{c.Secret}
+	}
 }
 func (c *Client) GetRequirePKCE() bool {
 	return c.RequirePKCE
