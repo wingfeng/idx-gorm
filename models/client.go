@@ -24,6 +24,8 @@ type Client struct {
 	RedirectUris string `json:"redirect_uris"`
 	// PostLogoutUris 是客户端登出后重定向的URI列表。
 	PostLogoutUris string `json:"post_logout_uris"`
+	// WebOrigins 定义了客户端允许访问的范围。
+	WebOrigins string `json:"web_origins"`
 	// RequirePKCE 指示是否需要使用PKCE（Proof Key for Code Exchange）进行授权码保护。
 	RequirePKCE bool `json:"require_pkce"`
 	// CreatedAt 记录了客户端的创建时间。
@@ -73,4 +75,7 @@ func (c *Client) GetSecret() []string {
 }
 func (c *Client) GetRequirePKCE() bool {
 	return c.RequirePKCE
+}
+func (c *Client) GetWebOrigins() []string {
+	return strings.Split(c.WebOrigins, " ")
 }
